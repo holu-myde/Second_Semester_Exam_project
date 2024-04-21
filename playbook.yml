@@ -1,0 +1,17 @@
+---
+- name: deploy lamp stack on slave node
+  hosts: all
+  become: true
+  tasks:
+    - name: copy script to slave node
+      ansible.builtin.copy:
+        src: /home/vagrant/lamp.sh
+        dest: /home/vagrant/lamp.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: run script to install lamp stack on slave node
+      script: /home/vagrant/lamp.sh
+      
+     
